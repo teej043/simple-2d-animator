@@ -29,22 +29,34 @@
 global.dragRotStop = 0;
 global.selectedNode = noone;
 
+global.frameCount = 1;
+global.frameCurrent = 1;
+
+global.generationCount = 0;
+
 obj = instance_create(room_width/2,room_height/2,objNode);
 
 with(obj){
-    X = x;
-    Y = y;
-    rot = 0;
-    len = 30;
-    wid = 5;
     core = true;
     parent = noone;
     childCount = 0;
-    children = 0;
-    childNth = 1;
+    childNth = 0;
     generation = 0;
     selected = false;
     rotStart = 0;
+    
+    data[? "core"] = true;
+    ds_map_add(data,"parent",noone);
+    ds_map_add(data,"childNth",1);
+    ds_map_add(data,"generation",0);
+    ds_map_add(data,"childCount",0);
+    ds_map_add(data,"rotStart",0);
+    
+    ds_list_add(X,x);
+    ds_list_add(Y,y);
+    ds_list_add(rot,0);
+    ds_list_add(len,30);
+    ds_list_add(wid,5);
 }
 
 global.selectedNode = obj;
@@ -70,24 +82,32 @@ global.selectedNode = obj;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_text(10,10, string(window_view_mouse_get_x(0) )+','+string(window_view_mouse_get_y(0)));
+            <string>var y1, y2;
+y1 = 140;
+y2 = 50;
+
+draw_text(10,10, string(window_view_mouse_get_x(0) )+','+string(window_view_mouse_get_y(0)));
 draw_text(10,30, string(mouse_x)+','+string(mouse_y));
 
+draw_text(10,y2+0,"Current Frame: "+string(global.frameCurrent));
+draw_text(10,y2+20,"Total Frames: "+string(global.frameCount));
+draw_text(10,y2+40,"Generations: "+string(global.generationCount));
+
 if (global.selectedNode != noone){
-    draw_text(10,50,"id: "+string(global.selectedNode.id));
-    draw_text(10,70,"parent: "+string(global.selectedNode.parent));
-    draw_text(10,90,"childCount: "+string(global.selectedNode.childCount));
-    draw_text(10,110,"childNth: "+string(global.selectedNode.childNth));
-    draw_text(10,130,"generation: "+string(global.selectedNode.generation));
-    draw_text(10,150,"X: "+string(global.selectedNode.X));
-    draw_text(10,170,"Y: "+string(global.selectedNode.Y));
-    draw_text(10,190,"rot: "+string(global.selectedNode.rot));
-    draw_text(10,210,"len: "+string(global.selectedNode.len));
-    draw_text(10,230,"wid: "+string(global.selectedNode.wid));
-    draw_text(10,250,"rotStart: "+string(global.selectedNode.rotStart));
-    draw_text(10,270,"children: ");
-    for(i=0; i&lt;= global.selectedNode.childCount; i+=1){
-        draw_text(20,290+(i*20),string(global.selectedNode.children[i]));
+    draw_text(10,y1+0,"id: "+string(global.selectedNode.id));
+    draw_text(10,y1+20,"parent: "+string(global.selectedNode.data[? "parent"]));
+    draw_text(10,y1+40,"childCount: "+string(global.selectedNode.data[? "childCount"]));
+    draw_text(10,y1+60,"childNth: "+string(global.selectedNode.data[? "childNth"]));
+    draw_text(10,y1+80,"generation: "+string(global.selectedNode.data[? "generation"]));
+    draw_text(10,y1+100,"X: "+string(global.selectedNode.X[| 0]));
+    draw_text(10,y1+120,"Y: "+string(global.selectedNode.Y[| 0]));
+    draw_text(10,y1+140,"rot: "+string(global.selectedNode.rot[| 0]));
+    draw_text(10,y1+160,"len: "+string(global.selectedNode.len[| 0]));
+    draw_text(10,y1+180,"wid: "+string(global.selectedNode.wid[| 0]));
+    draw_text(10,y1+200,"rotStart: "+string(global.selectedNode.rotStart));
+    draw_text(10,y1+220,"children: ");
+    for(i=0; i&lt;= global.selectedNode.childCount-1; i+=1){
+        draw_text(20,(y1+240)+(i*20),string(ds_list_find_value(global.selectedNode.children,i)));
     }
 }
 

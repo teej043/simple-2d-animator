@@ -10,6 +10,7 @@
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\nodeAdd.gml</script>
+    <script>scripts\nodeDataSave.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\objMain</object>

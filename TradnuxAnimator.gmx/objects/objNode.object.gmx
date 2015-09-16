@@ -31,15 +31,31 @@ rot = 0;
 len = 10;
 wid = 5;
 
+core = false;
 parent = noone; 
-rank = 1;
+childNth = 1;
 generation = 0;
 childCount = 0;
 children = 0;
+rotStart = 0;
+
 selected = false;
 drag = false;
 
-rotStart = 0;
+data = ds_map_create();
+ds_map_add(data,"core",false);
+ds_map_add(data,"parent",noone);
+ds_map_add(data,"childNth",1);
+ds_map_add(data,"generation",0);
+ds_map_add(data,"childCount",0);
+ds_map_add(data,"rotStart",0);
+
+children = ds_list_create();
+X = ds_list_create();
+Y = ds_list_create();
+rot = ds_list_create();
+len = ds_list_create();
+wid = ds_list_create();
 </string>
           </argument>
         </arguments>
@@ -62,15 +78,17 @@ rotStart = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var wx, wy;
+            <string>var wx, wy, par, frame;
+par = data[? "parent"];
 wx = window_view_mouse_get_x(0);
 wy = window_view_mouse_get_y(0);
+frame = global.frameCurrent-1;
 
 if (wx &gt; x-5 and wx &lt; x+5){
     if (wy &gt; y-5 and wy &lt; y+5){
         if mouse_check_button_pressed(mb_left){
             objNode.selected = false;
-            objNode.rotStart = objNode.rot;
+            //objNode.rotStart = objNode.rot;
             selected = true;
             global.selectedNode = id;
             
@@ -88,34 +106,39 @@ if (wx &gt; x-5 and wx &lt; x+5){
             drag = false;
         }
         
+        if mouse_check_button_released(mb_left){
+            if !drag drag = false;
+            
+        }
+        
     }
 }
 
 if drag{
     x = wx;
     y = wy;
-    X = x;
-    Y = y;
+    X[| frame] = x;
+    Y[| frame] = y;
     if !core{
-        rot = point_direction(parent.x, parent.y, x, y);
-        len = point_distance(parent.x, parent.y, x, y);
-    }
-    
+        rot[| frame] = point_direction(par.x, par.y, x, y);
+        len[| frame] = point_distance(par.x, par.y, x, y);
+    }   
 }
 
+/*
 if !core and !selected{
     x = parent.x + len*cos(degtorad(rot));
     y = parent.y - len*sin(degtorad(rot));
     X = x;
     Y = y;
-    //rot = (parent.rot + rotStart);
 }
+*/
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="8" enumb="0">
+    <event eventtype="8" enumb="73">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -132,28 +155,48 @@ if !core and !selected{
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var wx,wy;
+            <string>var wx,wy,xx,yy,width,length,frame,parX,parY;
 wx = window_view_mouse_get_x(0);
 wy = window_view_mouse_get_y(0);
+frame = global.frameCurrent-1;
 
-draw_circle(X,Y,wid,1);
+if ds_map_exists(data,X){
+    xx = X[| frame];
+    yy = Y[| frame];
+}else{
+    xx = x;
+    yy = y;
+}
+
+width = wid[| frame];
+length = len[| frame];
+
+if (data[? "core"] == false){
+    parX = data[? "parent"].X[| frame];
+    parY = data[? "parent"].Y[| frame];
+}else{
+    parX = xx;
+    parY = yy;
+}
+
+draw_circle(xx, yy, width, 1);
 
 if selected{
-    draw_circle(X,Y,wid,0);
+    draw_circle(xx, yy, width, 0);
 }
 
 if drag{
-    draw_circle_colour(X,Y,wid,c_black,c_black,1);
+    draw_circle_colour(xx, yy, width, c_black, c_black, 1);
 }
 
 if (wx &gt; x-5 and wx &lt; x+5){
     if (wy &gt; y-5 and wy &lt; y+5){
-        draw_circle_colour(X,Y,wid,c_aqua,c_aqua,0);
+        draw_circle_colour(xx, yy, width, c_aqua, c_aqua, 0);
     }
 }
 
 if !core{
-    draw_line(X,Y,parent.X,parent.Y);
+    draw_line(xx, yy, parX, parY);
 }
 </string>
           </argument>
