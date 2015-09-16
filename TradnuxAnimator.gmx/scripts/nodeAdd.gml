@@ -14,8 +14,8 @@ with(objNode){
             //Y = y;
             
             for(i=0; i<=global.frameCount-1; i+=1){
-                ds_list_add(X, other.X[| i] + other.len[| i] * cos(degtorad( other.rot[| i])) );
-                ds_list_add(Y, other.Y[| i] - other.len[| i] * sin(degtorad( other.rot[| i])) );
+                ds_list_add(X, x + other.len[| i] * cos(degtorad( other.rot[| i])) );
+                ds_list_add(Y, y - other.len[| i] * sin(degtorad( other.rot[| i])) );
                 ds_list_add(rot, other.rot[| i]);
                 ds_list_add(len, other.len[| i]);
                 ds_list_add(wid, other.wid[| i]);
