@@ -9,8 +9,11 @@
   <backgrounds name="background"/>
   <paths name="paths"/>
   <scripts name="scripts">
+    <script>scripts\init.gml</script>
+    <script>scripts\nodeInit.gml</script>
     <script>scripts\nodeAdd.gml</script>
     <script>scripts\nodeDataSave.gml</script>
+    <script>scripts\nodeDragChildren.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\objMain</object>

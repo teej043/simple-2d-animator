@@ -8,14 +8,15 @@ with(objNode){
         data[? "childCount"] = ds_list_size(children);  
         
         with(obj){
-            //x = other.data[? "X"] + other.data[? "len"]*cos(degtorad(other.data[? "rot"]));
-            //y = other.data[? "Y"] - other.data[? "len"]*sin(degtorad(other.data[? "rot"]));
+            var frame;
+            frame = global.frameCurrent-1;
+            x = other.X[| frame] + other.len[| frame]*cos(degtorad(other.rot[| frame]));
+            y = other.Y[| frame] - other.len[| frame]*sin(degtorad(other.rot[| frame]));
             //X = x;
             //Y = y;
-            
             for(i=0; i<=global.frameCount-1; i+=1){
-                ds_list_add(X, x + other.len[| i] * cos(degtorad( other.rot[| i])) );
-                ds_list_add(Y, y - other.len[| i] * sin(degtorad( other.rot[| i])) );
+                ds_list_add(X, other.x + other.len[| i] * cos(degtorad( other.rot[| i])) );
+                ds_list_add(Y, other.y - other.len[| i] * sin(degtorad( other.rot[| i])) );
                 ds_list_add(rot, other.rot[| i]);
                 ds_list_add(len, other.len[| i]);
                 ds_list_add(wid, other.wid[| i]);
@@ -35,7 +36,6 @@ with(objNode){
             childCount = 0;
             */
             
-            x = 
             
             
             data[? "core"] = false;

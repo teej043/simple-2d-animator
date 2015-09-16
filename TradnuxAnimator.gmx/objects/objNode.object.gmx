@@ -25,37 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>X = 0;
-Y = 0;
-rot = 0;
-len = 10;
-wid = 5;
-
-core = false;
-parent = noone; 
-childNth = 1;
-generation = 0;
-childCount = 0;
-children = 0;
-rotStart = 0;
-
-selected = false;
-drag = false;
-
-data = ds_map_create();
-ds_map_add(data,"core",false);
-ds_map_add(data,"parent",noone);
-ds_map_add(data,"childNth",1);
-ds_map_add(data,"generation",0);
-ds_map_add(data,"childCount",0);
-ds_map_add(data,"rotStart",0);
-
-children = ds_list_create();
-X = ds_list_create();
-Y = ds_list_create();
-rot = ds_list_create();
-len = ds_list_create();
-wid = ds_list_create();
+            <string>nodeInit();
 </string>
           </argument>
         </arguments>
@@ -78,29 +48,42 @@ wid = ds_list_create();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var wx, wy, par, frame;
+            <string>var wx, wy, par, frame, isCore;
 par = data[? "parent"];
 wx = window_view_mouse_get_x(0);
 wy = window_view_mouse_get_y(0);
 frame = global.frameCurrent-1;
+isCore = data[? "core"];
 
 if (wx &gt; x-5 and wx &lt; x+5){
     if (wy &gt; y-5 and wy &lt; y+5){
         if mouse_check_button_pressed(mb_left){
             objNode.selected = false;
-            //objNode.rotStart = objNode.rot;
+            objNode.drag = false;
+     
             selected = true;
             global.selectedNode = id;
             
-            //iterate children drag
-            for( i = 1; i &lt;= childCount; i+=1 ){
-                
+            nodeDragChildren();
+            
+            drag = true;
+            xOffset = wx - x;
+            yOffset = wy - y;
+
+            if !core{
+                rot[| frame] = point_direction(par.x, par.y,x,y);
+                global.dragRotStart = rot[| frame];  
+            }else{
+                        //rot[| frame] = point_direction(x, y,x,y);
+            //global.dragRotStart = rot[| frame];  
             }
+            
+            
         }
         
         if mouse_check_button(mb_left){
             if selected{
-                drag = true;
+
             }
         }else{
             drag = false;
@@ -115,14 +98,34 @@ if (wx &gt; x-5 and wx &lt; x+5){
 }
 
 if drag{
-    x = wx;
-    y = wy;
-    X[| frame] = x;
-    Y[| frame] = y;
-    if !core{
-        rot[| frame] = point_direction(par.x, par.y, x, y);
-        len[| frame] = point_distance(par.x, par.y, x, y);
-    }   
+    if (selected and isCore){
+        x = wx - xOffset;
+        y = wy - yOffset;
+        X[| frame] = x;
+        Y[| frame] = y; 
+    } 
+    else{
+        if selected {
+            x = wx - xOffset;
+            y = wy - yOffset;
+            len[| frame] = point_distance(par.x, par.y, x, y);
+            rot[| frame] = point_direction(par.x, par.y, x, y);
+            X[| frame] = x;
+            Y[| frame] = y; 
+            global.dragRotStop = rot[| frame];
+        }
+        else{
+            len[| frame] = point_distance(par.x, par.y, x, y);
+            rot[| frame] = point_direction(par.x, par.y, x, y);
+            global.dragRotStop = rot[| frame];
+        }
+        
+           
+        x = par.x + len[| frame] * cos(degtorad(rot[| frame]));
+        y = par.y - len[| frame] * sin(degtorad(rot[| frame]));
+        //scrVerticesReform(objCtrl.frameCur);
+    }
+}else{
 }
 
 /*
@@ -198,6 +201,34 @@ if (wx &gt; x-5 and wx &lt; x+5){
 if !core{
     draw_line(xx, yy, parX, parY);
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="116">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//refresh nodes
+var frame;
+frame = global.frameCurrent-1;
+x = X[| frame];
+y = Y[| frame];
+
 </string>
           </argument>
         </arguments>
