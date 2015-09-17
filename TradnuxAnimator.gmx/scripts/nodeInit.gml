@@ -4,6 +4,7 @@ rot = 0;
 len = 10;
 wid = 5;
 
+name = "";
 core = false;
 parent = noone; 
 childNth = 1;
@@ -19,6 +20,7 @@ selected = false;
 drag = false;
 
 data = ds_map_create();
+ds_map_add(data,"name", "");
 ds_map_add(data,"core",false);
 ds_map_add(data,"parent",noone);
 ds_map_add(data,"childNth",1);

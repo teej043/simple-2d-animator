@@ -10,6 +10,7 @@ global.generationCount = 0;
 obj = instance_create(room_width/2,room_height/2,objNode);
 
 with(obj){
+    name = "core0";
     core = true;
     parent = noone;
     childCount = 0;
@@ -19,6 +20,7 @@ with(obj){
     rotStart = 0;
     
     data[? "core"] = true;
+    data[? "name"] = name;
     ds_map_add(data,"parent",noone);
     ds_map_add(data,"childNth",1);
     ds_map_add(data,"generation",0);

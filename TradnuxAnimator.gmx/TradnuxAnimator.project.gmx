@@ -12,8 +12,10 @@
     <script>scripts\init.gml</script>
     <script>scripts\nodeInit.gml</script>
     <script>scripts\nodeAdd.gml</script>
+    <script>scripts\nodeStep.gml</script>
     <script>scripts\nodeDataSave.gml</script>
     <script>scripts\nodeDragChildren.gml</script>
+    <script>scripts\nodeDraw.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\objMain</object>
