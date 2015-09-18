@@ -1,11 +1,16 @@
-var frame,isAppend;
+var frame, isAppend, isCore, parent;
 frame = argument0-1;
 isAppend = argument1;
-parent = data[? "parent"];
+
+
 
 with objNode
 {
+    isCore = data[? "core"];
+    parent = data[? "parent"];
+
     if isAppend{
+        //add new records
         if data[? "core"]{
             ds_list_add(X,x);
             ds_list_add(Y,y);
@@ -15,6 +20,18 @@ with objNode
             ds_list_add(rot, point_direction(parent.x, parent.y, x, y));
             ds_list_add(len, point_distance(parent.x, parent.y, x, y));
             ds_list_add(wid, width);
+        }
+    }else{
+        //we just overwrite new data
+        if data[? "core"]{
+            X[| frame] = x;
+            Y[| frame] = y;
+        }else{
+            X[| frame] = x;
+            Y[| frame] = y;
+            rot[| frame] = point_direction(parent.x, parent.y, x, y);
+            len[| frame] = point_distance(parent.x, parent.y, x, y);
+            wid[| frame] = width;
         }
     }
 }

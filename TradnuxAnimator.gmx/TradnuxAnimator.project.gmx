@@ -16,6 +16,7 @@
     <script>scripts\nodeDataSave.gml</script>
     <script>scripts\nodeDragChildren.gml</script>
     <script>scripts\nodeDraw.gml</script>
+    <script>scripts\nodeDrawOnionSkin.gml</script>
     <script>scripts\guiDraw.gml</script>
     <script>scripts\frameAdd.gml</script>
   </scripts>

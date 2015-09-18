@@ -1,7 +1,7 @@
 xPos = 0;
 yPos = 0;
 rotation = 0;
-length = 10;
+length = 30;
 width = 5;
 
 /*
