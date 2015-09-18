@@ -1,9 +1,10 @@
-X = 0;
-Y = 0;
-rot = 0;
-len = 10;
-wid = 5;
+xPos = 0;
+yPos = 0;
+rotation = 0;
+length = 10;
+width = 5;
 
+/*
 name = "";
 core = false;
 parent = noone; 
@@ -11,6 +12,8 @@ childNth = 1;
 generation = 0;
 childCount = 0;
 children = 0;
+*/
+
 rotStart = 0;
 rotStartDrag = 0;
 xOffset = 0;

@@ -1,36 +1,39 @@
-var wx, wy, par, frame, isCore;
+var wx, wy, par, isCore;
 par = data[? "parent"];
 wx = window_view_mouse_get_x(0);
 wy = window_view_mouse_get_y(0);
-frame = global.frameCurrent-1;
 isCore = data[? "core"];
 
+//make sure our mouse pointer is inside the node instance
 if (wx > x-5 and wx < x+5){
     if (wy > y-5 and wy < y+5){
+        
+        //if user clicked on the node
         if mouse_check_button_pressed(mb_left){
+            
+            //flag all node instances as not selected and not dragged 
             objNode.selected = false;
             objNode.drag = false;
-     
+            
+            //however this current instance will re-selected
             selected = true;
             global.selectedNode = id;
             
+            //inform its children that they are ready for manipulations
             nodeDragChildren();
             
+            //flag this instance to be ready for dragging
             drag = true;
             xOffset = wx - x;
             yOffset = wy - y;
 
-            if !core{
-                rot[| frame] = point_direction(par.x, par.y,x,y);
-                global.dragRotStart = rot[| frame];  
+            if !data[? "core"]{
+                rotation = point_direction(par.x, par.y,x,y);
+                global.dragRotStart = rotation;  
             }else{
-                //rot[| frame] = point_direction(par.x, par.y,x,y);
-                //global.dragRotStart = rot[| frame];  
-            }
-            
-            
+                global.dragRotStart = 0;  
+            }    
         }
-        
         
         if mouse_check_button(mb_left){
             if selected{
@@ -50,38 +53,30 @@ if (wx > x-5 and wx < x+5){
 }
 
 if drag and mouse_check_button(mb_left){
-    if (selected and isCore){
-        x = wx - xOffset;
-        y = wy - yOffset;
-        X[| frame] = x;
-        Y[| frame] = y; 
+    if isCore{
+        if selected{
+            x = wx - xOffset;
+            y = wy - yOffset;
+            global.dragRotStop = 0;
+        } 
     } 
     else{
         if selected {
-            len[| frame] = point_distance(par.x, par.y, x, y);
-            rot[| frame] = point_direction(par.x, par.y, x, y);
+            
+            length = point_distance(par.x, par.y, x, y);
+            rotation = point_direction(par.x, par.y, x, y);
             x = wx - xOffset;
             y = wy - yOffset;
-            X[| frame] = x;
-            Y[| frame] = y; 
-            global.dragRotStop = rot[| frame];
+            global.dragRotStop = rotation;
+
         }
         else{
-            //len[| frame] = point_distance(par.x, par.y, x, y);
-            //rot[| frame] = point_direction(par.x, par.y, x, y);
-            //global.dragRotStop = rot[| frame];
-            x = par.x + len[| frame] * cos(degtorad(rot[| frame]));
-            y = par.y - len[| frame] * sin(degtorad(rot[| frame]));
-            X[| frame] = x;
-            Y[| frame] = y; 
-            rot[| frame] = global.dragRotStop - global.dragRotStart + rotStart;
+            x = par.x + length * cos(degtorad(rotation));
+            y = par.y - length * sin(degtorad(rotation));
+            rotation = global.dragRotStop - global.dragRotStart + rotStart;
         }
-        
-
-
-        //scrVerticesReform(objCtrl.frameCur);
-        
     }
-}else{
+}
+else{
     
 }
