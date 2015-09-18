@@ -1,17 +1,35 @@
-var xx, yy, width, frame, skins, parX, parY, n;
-frame = global.frameCurrent-1;
-skins = 1;
+var xx, yy, width, frameN, skins, maxSkins, parX, parY, n, isCore;
+frameN = global.frameCurrent-1;
+skins = 3;
 width = 5;
+maxSkins = 3;
+isCore = data[? "core"];
+
+//maximum onion skin is 3
+if ( frameN < (maxSkins-1) ){
+    skins = frameN;
+}
 
 
-for( i=1; i<=skins; i+=1 ){
-    n = frame - i;
+for( i=skins; i>=0; i-=1 ){
+    draw_set_alpha(0.4 - (i/10));
+    
+    n = frameN - i;
     xx = X[| n];
     yy = Y[| n];
-    parX = data[? "parent"].X[| n];
-    parY = data[? "parent"].Y[| n];
+    if isCore{
+        parX = xx;
+        parY = yy;
+    }
+    else{
+        parX = data[? "parent"].X[| n];
+        parY = data[? "parent"].Y[| n];
+    }
     draw_line_width(xx, yy, parX, parY, width);
+    
+    draw_set_alpha(1);
 }
+
 
 /*
 draw_circle(xx, yy, width, 1);
