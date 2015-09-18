@@ -14,11 +14,14 @@
     <script>scripts\nodeAdd.gml</script>
     <script>scripts\nodeStep.gml</script>
     <script>scripts\nodeDataSave.gml</script>
+    <script>scripts\nodeDataLoad.gml</script>
     <script>scripts\nodeDragChildren.gml</script>
     <script>scripts\nodeDraw.gml</script>
     <script>scripts\nodeDrawOnionSkin.gml</script>
     <script>scripts\guiDraw.gml</script>
     <script>scripts\frameAdd.gml</script>
+    <script>scripts\frameNext.gml</script>
+    <script>scripts\framePrev.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\objMain</object>
