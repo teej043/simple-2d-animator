@@ -22,6 +22,8 @@
     <script>scripts\frameAdd.gml</script>
     <script>scripts\frameNext.gml</script>
     <script>scripts\framePrev.gml</script>
+    <script>scripts\framePlayToggle.gml</script>
+    <script>scripts\framePlay.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\objMain</object>

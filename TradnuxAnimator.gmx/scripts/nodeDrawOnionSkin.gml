@@ -1,3 +1,5 @@
+if global.playBack exit;
+
 var xx, yy, width, frameN, skins, maxSkins, parX, parY, n, isCore;
 frameN = global.frameCurrent-1;
 skins = 3;

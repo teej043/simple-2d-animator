@@ -1,12 +1,13 @@
-var wx, wy, par, isCore;
+var wx, wy, par, isCore, pxw;
 par = data[? "parent"];
 wx = window_view_mouse_get_x(0);
 wy = window_view_mouse_get_y(0);
 isCore = data[? "core"];
+pxw = 7;
 
 //make sure our mouse pointer is inside the node instance
-if (wx > x-5 and wx < x+5){
-    if (wy > y-5 and wy < y+5){
+if (wx > x-pxw and wx < x+pxw){
+    if (wy > y-pxw and wy < y+pxw){
         
         //if user clicked on the node
         if mouse_check_button_pressed(mb_left){

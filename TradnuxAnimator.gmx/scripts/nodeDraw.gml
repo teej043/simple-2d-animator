@@ -5,7 +5,7 @@ frame = global.frameCurrent-1;
 
 xx = x;
 yy = y;
-width = 5;
+width = 7;
 
 if !data[? "core"]{
     parX = data[? "parent"].x;

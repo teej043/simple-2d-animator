@@ -4,6 +4,10 @@ global.selectedNode = noone;
 
 global.frameCount = 1;
 global.frameCurrent = 1;
+global.playBack = 0;
+global.playBackAlarm = 1;
+global.playBackAlarmMin = 1;
+global.playBackAlarmMax = room_speed;
 
 global.generationCount = 0;
 
