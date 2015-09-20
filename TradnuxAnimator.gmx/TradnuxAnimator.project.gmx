@@ -24,6 +24,8 @@
     <script>scripts\framePrev.gml</script>
     <script>scripts\framePlayToggle.gml</script>
     <script>scripts\framePlay.gml</script>
+    <script>scripts\shapeRemold.gml</script>
+    <script>scripts\shapeDraw.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\objMain</object>

@@ -4,15 +4,25 @@ rotation = 0;
 length = 30;
 width = 5;
 
-/*
-name = "";
-core = false;
-parent = noone; 
-childNth = 1;
-generation = 0;
-childCount = 0;
-children = 0;
-*/
+shape = 0;
+shapeFill = c_black;
+
+v1x = ds_list_create();
+v1y = ds_list_create();
+v2x = ds_list_create();
+v2y = ds_list_create();
+v3x = ds_list_create();
+v3y = ds_list_create();
+v4x = ds_list_create();
+v4y = ds_list_create();
+v5x = ds_list_create();
+v5y = ds_list_create();
+v6x = ds_list_create();
+v6y = ds_list_create();
+v7x = ds_list_create();
+v7y = ds_list_create();
+v8x = ds_list_create();
+v8y = ds_list_create();
 
 rotStart = 0;
 rotStartDrag = 0;

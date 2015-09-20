@@ -8,18 +8,24 @@ with objNode
 {
     isCore = data[? "core"];
     parent = data[? "parent"];
-
+    
+    
     if isAppend{
         //add new records
         if data[? "core"]{
             ds_list_add(X,x);
             ds_list_add(Y,y);
+            ds_list_add(rot, rotation);
+            ds_list_add(len, length);
+            ds_list_add(wid, width);
         }else{
             ds_list_add(X,x);
             ds_list_add(Y,y);
             ds_list_add(rot, point_direction(parent.x, parent.y, x, y));
             ds_list_add(len, point_distance(parent.x, parent.y, x, y));
             ds_list_add(wid, width);
+            
+            shapeRemold(frame);
         }
     }else{
         //we just overwrite new data
@@ -32,8 +38,12 @@ with objNode
             rot[| frame] = point_direction(parent.x, parent.y, x, y);
             len[| frame] = point_distance(parent.x, parent.y, x, y);
             wid[| frame] = width;
+            
+            shapeRemold(frame);
         }
     }
+    
+    
 }
 
 

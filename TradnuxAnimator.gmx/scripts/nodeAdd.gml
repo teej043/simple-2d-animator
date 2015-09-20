@@ -1,3 +1,5 @@
+nodeDataSave(global.frameCurrent-1,0);
+
 with(objNode){
     if selected{
         var obj;
@@ -6,7 +8,7 @@ with(objNode){
         
         ds_list_add(children, obj);
         data[? "childCount"] = ds_list_size(children);  
-        
+    
         with(obj){
             var frame,gen,parNth,nth;
             frame = global.frameCurrent-1;
@@ -34,6 +36,23 @@ with(objNode){
             }
             
             data[? "name"] = "node-"+string(gen)+"-"+string(parNth)+"-"+string(nth);
+            
+            for(i=0;i<=global.frameCount-1;i+=1){
+                if data[? "core"]{
+                    ds_list_add(X,x);
+                    ds_list_add(Y,y);
+                    ds_list_add(rot,0);
+                    ds_list_add(len,30);
+                    ds_list_add(wid,10);
+                }
+                else{
+                    ds_list_add(rot,point_direction(data[? "parent"].x,data[? "parent"].y,x,y));
+                    ds_list_add(len,point_distance(data[? "parent"].x,data[? "parent"].y,x,y));
+                    ds_list_add(wid,data[? "parent"].wid[| i]);
+                }
+                
+                shapeRemold(frame);
+            }
         }
     }
 }
