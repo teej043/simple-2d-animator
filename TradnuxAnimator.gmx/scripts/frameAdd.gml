@@ -7,3 +7,7 @@ nodeDataAdd();
 //Increment total number of frames by one, then assign new frame as current.
 global.frameCount +=1;
 global.frameCurrent = global.frameCount;
+
+with(objNode){
+    shapeRemold(global.frameCount-1);
+}

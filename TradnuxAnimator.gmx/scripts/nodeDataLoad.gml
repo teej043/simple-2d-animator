@@ -1,7 +1,12 @@
 with objNode
 {
+<<<<<<< HEAD
     var frame, isCore;
     frame = argument0-1;
+=======
+    
+    
+>>>>>>> add vertices feature
     isCore = data[? "core"];
     //parent = data[? "parent"];
 
@@ -9,13 +14,22 @@ with objNode
     if data[? "core"]{
         x = X[| frame];
         y = Y[| frame];
+        rotation = rot[| frame];
+        length = len[| frame];
+        width = wid[| frame];
+        shapeRemold(frame);
     }else{
         x = X[| frame];
         y = Y[| frame];
         rotation = rot[| frame];
         length = len[| frame];
         width = wid[| frame];
+        
+        shapeRemold(frame);
     }
+    
+    
+    
 }
 
 

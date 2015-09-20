@@ -77,6 +77,8 @@ if drag and mouse_check_button(mb_left){
             rotation = global.dragRotStop - global.dragRotStart + rotStart;
         }
     }
+    
+    shapeRemold(global.frameCurrent-1);
 }
 else{
     

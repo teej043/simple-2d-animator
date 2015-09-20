@@ -32,5 +32,8 @@ if (wx > x-5 and wx < x+5){
 }
 
 if !data[? "core"]{
-    draw_line_width(xx, yy, parX, parY, width);
+    //draw_line_width(xx, yy, parX, parY, width);
+    shapeDraw(frame);
 }
+
+
