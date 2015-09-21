@@ -1,4 +1,5 @@
 if global.playBack exit;
+if (global.frameCurrent == 1) exit;
 
 var xx, yy, width, frameN, skins, maxSkins, parX, parY, n, isCore;
 frameN = global.frameCurrent-1;
@@ -31,26 +32,3 @@ for( i=skins; i>=0; i-=1 ){
     
     draw_set_alpha(1);
 }
-
-
-/*
-draw_circle(xx, yy, width, 1);
-
-if selected{
-    draw_circle(xx, yy, width, 0);
-}
-
-if drag{
-    draw_circle_colour(xx, yy, width, c_yellow, c_yellow, 1);
-}
-
-if (wx > x-5 and wx < x+5){
-    if (wy > y-5 and wy < y+5){
-        draw_circle_colour(xx, yy, width, c_aqua, c_aqua, 0);
-    }
-}
-
-if !data[? "core"]{
-    draw_line_width(xx, yy, parX, parY, width);
-}
-*/

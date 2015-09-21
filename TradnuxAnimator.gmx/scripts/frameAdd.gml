@@ -1,7 +1,8 @@
 //Appends a new frame to the timeline
 
 //Before we add a frame, we need to record local data of current frame to data structures.
-nodeDataSave( global.frameCurrent, true);
+nodeDataSave(global.frameCurrent);
+nodeDataAdd();
 
 //Increment total number of frames by one, then assign new frame as current.
 global.frameCount +=1;

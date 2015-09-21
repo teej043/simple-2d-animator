@@ -1,8 +1,7 @@
-var frame, isCore;
-frame = argument0-1;
-
 with objNode
 {
+    var frame, isCore;
+    frame = argument0-1;
     isCore = data[? "core"];
     //parent = data[? "parent"];
 

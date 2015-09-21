@@ -1,4 +1,4 @@
-nodeDataSave(global.frameCurrent-1,0);
+nodeDataSave(global.frameCurrent);
 
 with(objNode){
     if selected{
@@ -38,7 +38,7 @@ with(objNode){
             
             data[? "name"] = "node-"+string(gen)+"-"+string(parNth)+"-"+string(nth);
             
-            for(i=1;i<=global.frameCount;i+=1){
+            for(i=0;i<=global.frameCount-1;i+=1){
                 var xx,yy,parX,parY;
                 parX = par.X[| i];
                 parY = par.Y[| i];
