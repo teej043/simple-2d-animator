@@ -1,3 +1,5 @@
+nodeDataSave(global.frameCurrent-1,0);
+
 with(objNode){
     if selected{
         var obj;
@@ -8,7 +10,8 @@ with(objNode){
         data[? "childCount"] = ds_list_size(children);  
         
         with(obj){
-            var frame,gen,parNth,nth;
+            var frame,gen,parNth,nth,par;
+            par = other.id;
             frame = global.frameCurrent-1;
             
             //lets use local variables first, then save them as data later during frame management operations
@@ -34,6 +37,19 @@ with(objNode){
             }
             
             data[? "name"] = "node-"+string(gen)+"-"+string(parNth)+"-"+string(nth);
+            
+            for(i=1;i<=global.frameCount;i+=1){
+                var xx,yy,parX,parY;
+                parX = par.X[| i];
+                parY = par.Y[| i];
+                xx = parX + par.len[| i]*cos(degtorad(par.rot[| i]));
+                yy = parY - par.len[| i]*sin(degtorad(par.rot[| i]));
+                ds_list_add(X, xx);
+                ds_list_add(Y, yy);
+                ds_list_add(rot, point_direction(parX, parY, xx, yy));
+                ds_list_add(len, point_distance(parX, parY, xx, yy));
+                ds_list_add(wid, width);
+            }
         }
     }
 }

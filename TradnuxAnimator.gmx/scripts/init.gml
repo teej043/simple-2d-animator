@@ -25,13 +25,13 @@ with(obj){
     ds_map_add(data,"childCount",0);
     ds_map_add(data,"rotStart",0);
     
-    /*
+    
     ds_list_add(X,x);
     ds_list_add(Y,y);
     ds_list_add(rot,0);
     ds_list_add(len,30);
     ds_list_add(wid,5);
-    */
+    
 }
 
 global.selectedNode = obj;
