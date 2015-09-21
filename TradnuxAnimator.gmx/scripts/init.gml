@@ -10,6 +10,7 @@ global.playBackAlarmMin = 1;
 global.playBackAlarmMax = room_speed;
 
 global.generationCount = 0;
+global.cores = ds_list_create();
 
 obj = instance_create(room_width/2,room_height/2,objNode);
 
@@ -35,3 +36,6 @@ with(obj){
 }
 
 global.selectedNode = obj;
+ds_list_add(global.cores,obj);
+
+str = "";
