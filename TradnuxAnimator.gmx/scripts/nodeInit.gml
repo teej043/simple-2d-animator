@@ -4,8 +4,6 @@ rotation = 0;
 length = 30;
 width = 5;
 
-<<<<<<< HEAD
-=======
 shape = 0;
 shapeFill = c_black;
 
@@ -26,7 +24,6 @@ v7y = ds_list_create();
 v8x = ds_list_create();
 v8y = ds_list_create();
 
->>>>>>> add vertices feature
 rotStart = 0;
 rotStartDrag = 0;
 xOffset = 0;

@@ -1,12 +1,7 @@
 with objNode
 {
-<<<<<<< HEAD
     var frame, isCore;
     frame = argument0-1;
-=======
-    
-    
->>>>>>> add vertices feature
     isCore = data[? "core"];
     //parent = data[? "parent"];
 
@@ -27,9 +22,6 @@ with objNode
         
         shapeRemold(frame);
     }
-    
-    
-    
 }
 
 
