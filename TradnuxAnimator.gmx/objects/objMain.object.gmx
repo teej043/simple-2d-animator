@@ -92,6 +92,7 @@
             <kind>1</kind>
             <string>guiDraw();
 guiDrawNodeTree();
+guiDrawNodeNest();
 </string>
           </argument>
         </arguments>

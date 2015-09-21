@@ -27,6 +27,7 @@
     <script>scripts\framePlay.gml</script>
     <script>scripts\guiDrawNodeTree.gml</script>
     <script>scripts\guiDrawNodeTreeChildren.gml</script>
+    <script>scripts\guiDrawNodeNest.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\objMain</object>

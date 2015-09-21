@@ -73,6 +73,7 @@
             <kind>1</kind>
             <string>nodeDrawOnionSkin();
 nodeDraw();
+
 </string>
           </argument>
         </arguments>

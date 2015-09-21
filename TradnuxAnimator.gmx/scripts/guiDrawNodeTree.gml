@@ -16,5 +16,4 @@ for(i=0; i<=coreNum-1; i++){
 draw_text(xx,yy,str);
 
 
-instance_number(objNode);
-instance_find(obj,n);
+
