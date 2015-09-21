@@ -1,7 +1,12 @@
 with objNode
 {
+<<<<<<< HEAD
     var frame, isCore;
     frame = argument0-1;
+=======
+    
+    
+>>>>>>> bb028f4c927a855acfc305b215566bb7fc6dd3f2
     isCore = data[? "core"];
     //parent = data[? "parent"];
 
@@ -22,6 +27,9 @@ with objNode
         
         shapeRemold(frame);
     }
+    
+    
+    
 }
 
 
