@@ -1,3 +1,6 @@
+/*-- Tradnux Animator --*/
+
+
 global.dragRotStart = 0;
 global.dragRotStop = 0;
 global.selectedNode = noone;
