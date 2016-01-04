@@ -14,17 +14,23 @@ global.cores = ds_list_create();
 
 obj = instance_create(room_width/2,room_height/2,objNode);
 
+
+
 with(obj){    
     selected = false;
     rotStart = 0;
     
     data[? "core"] = true;
     data[? "name"] = "core1";
-    ds_map_add(data,"parent",noone);
+    
+    
+    ds_map_add(data,"parent", noone);
     ds_map_add(data,"childNth",1);
     ds_map_add(data,"generation",0);
     ds_map_add(data,"childCount",0);
     ds_map_add(data,"rotStart",0);
+    
+    
     
     
     ds_list_add(X,x);
@@ -34,6 +40,8 @@ with(obj){
     ds_list_add(wid,5);
     
 }
+
+
 
 global.selectedNode = obj;
 ds_list_add(global.cores,obj);

@@ -1,3 +1,4 @@
+
 var y1, y2;
 y1 = 10;
 y2 = y1+(8*20);
@@ -31,4 +32,5 @@ if (global.selectedNode != noone){
         draw_text(20,(y2+260)+(i*20),string(ds_list_find_value(global.selectedNode.children,i)));
     }
 }
+
 

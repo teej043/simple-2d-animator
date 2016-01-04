@@ -15,11 +15,13 @@ drag = false;
 data = ds_map_create();
 ds_map_add(data,"name", "");
 ds_map_add(data,"core",false);
-ds_map_add(data,"parent",noone);
+
+ds_map_add(data,"parent", noone);
 ds_map_add(data,"childNth",1);
 ds_map_add(data,"generation",0);
 ds_map_add(data,"childCount",0);
 ds_map_add(data,"rotStart",0);
+
 
 children = ds_list_create();
 X = ds_list_create();

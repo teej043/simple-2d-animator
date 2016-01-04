@@ -1,7 +1,7 @@
 nodeDataSave(global.frameCurrent);
 
 with(objNode){
-    if selected{
+    if ( selected && (id == global.selectedNode)) {
         var obj;
         obj = instance_create( x + length*cos(degtorad(rotation)), y - length*sin(degtorad(rotation)), objNode);
         data[? "childCount"]+=1;

@@ -12,9 +12,11 @@ if (wx > x-pxw and wx < x+pxw){
         //if user clicked on the node
         if mouse_check_button_pressed(mb_left){
             
-            //flag all node instances as not selected and not dragged 
-            objNode.selected = false;
-            objNode.drag = false;
+            //flag all node instances as not selected and not dragged       
+            with(objNode){
+                selected = false;
+                drag = false;
+            }
             
             //however this current instance will re-selected
             selected = true;
