@@ -9,6 +9,6 @@ for (i = 0; i <= childnum-1; i += 1){
         yOffset = window_view_mouse_get_y(0) - y;
         rotStart = point_direction(par.x,par.y,x,y);
 
-        if (childnum > 0) nodeDragChildren();
+        if (childnum > 0) nodeChildrenDrag();
     }
 }

@@ -16,10 +16,12 @@
     <script>scripts\nodeInit.gml</script>
     <script>scripts\nodeAdd.gml</script>
     <script>scripts\nodeStep.gml</script>
+    <script>scripts\nodeDelete.gml</script>
     <script>scripts\nodeDataAdd.gml</script>
     <script>scripts\nodeDataSave.gml</script>
     <script>scripts\nodeDataLoad.gml</script>
-    <script>scripts\nodeDragChildren.gml</script>
+    <script>scripts\nodeChildrenDrag.gml</script>
+    <script>scripts\nodeChildrenDelete.gml</script>
     <script>scripts\nodeDraw.gml</script>
     <script>scripts\nodeDrawOnionSkin.gml</script>
     <script>scripts\guiDraw.gml</script>

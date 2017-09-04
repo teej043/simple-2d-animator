@@ -3,6 +3,7 @@ var y1, y2;
 y1 = 10;
 y2 = y1+(8*20);
 
+draw_set_color(c_black);
 
 draw_text(10,y1+0, string(window_view_mouse_get_x(0) )+','+string(window_view_mouse_get_y(0)));
 draw_text(10,y1+20, string(mouse_x)+','+string(mouse_y));

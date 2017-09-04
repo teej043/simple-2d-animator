@@ -23,7 +23,7 @@ if (wx > x-pxw and wx < x+pxw){
             global.selectedNode = id;
             
             //inform its children that they are ready for manipulations
-            nodeDragChildren();
+            nodeChildrenDrag();
             
             //flag this instance to be ready for dragging
             drag = true;
