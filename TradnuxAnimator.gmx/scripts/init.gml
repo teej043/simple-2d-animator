@@ -50,3 +50,7 @@ global.selectedNode = obj;
 ds_list_add(global.cores,obj);
 
 str = "";
+
+
+surface = surface_create(room_width, room_height);
+

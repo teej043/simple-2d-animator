@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-2</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -73,6 +73,50 @@
         </arguments>
       </action>
     </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if surface_exists(surface){
+  surface_set_target(surface);
+  
+  //draw_set_colour_write_enable(false,false,false,true);
+  //draw_clear(c_white);
+  draw_clear_alpha(c_white,0);
+  //draw_rectangle_colour(0,0,sfc_width,sfc_height,c_black,c_black,c_black,c_black,false);
+  //draw_set_colour_write_enable(true,true,true,false);
+
+  with(objNode){
+    nodeDrawOnionSkin();
+    nodeDraw();
+  }
+  
+  draw_text_colour(0,0,'test surface',c_lime,c_lime,c_green,c_green,0.5);
+  
+  surface_reset_target();
+  
+  //draw_set_colour_write_enable(true,true,true,false);
+  
+}
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="8" enumb="64">
       <action>
         <libid>1</libid>
@@ -93,6 +137,32 @@
             <string>guiDraw();
 guiDrawNodeTree();
 guiDrawNodeNest();
+
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//draw_surface_ext(surface,10,10,0.5,0.5,0,c_white,1);
+draw_surface_center_ext(surface,30,10,-1,1,0,c_white,1);
 </string>
           </argument>
         </arguments>

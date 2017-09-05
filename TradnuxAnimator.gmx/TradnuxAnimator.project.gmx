@@ -38,6 +38,9 @@
       <script>scripts\scrHTML5ScaleCanvas.gml</script>
       <script>scripts\scrHTML5FullscreenView.gml</script>
     </scripts>
+    <scripts name="utilities">
+      <script>scripts\draw_surface_center_ext.gml</script>
+    </scripts>
   </scripts>
   <objects name="objects">
     <object>objects\objMain</object>
